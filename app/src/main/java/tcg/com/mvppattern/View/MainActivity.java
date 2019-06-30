@@ -3,11 +3,17 @@ package tcg.com.mvppattern.View;
 import android.provider.SyncStateContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
+
 import tcg.com.mvppattern.Network.ApiClient;
 import tcg.com.mvppattern.Network.ErrorBody;
+import tcg.com.mvppattern.Network.NetworkConstants;
 import tcg.com.mvppattern.Network.PostInterface;
 import tcg.com.mvppattern.Network.PresenterResponse;
 import tcg.com.mvppattern.Presenter.CommonPresenter;
@@ -65,7 +71,50 @@ public class MainActivity extends AppCompatActivity implements PresenterResponse
 
     @Override
     public void getResult(Object response, String responseType) {
+        {
 
+            JsonObject jsonObject = (JsonObject) response;
+            Log.d("HandleOrEmail", response + "");
+            if (responseType.equals(NetworkConstants.Type.ADD_CONTACTS)) { // Add Contact
+
+                if (jsonObject.get("status").getAsString().equals("-1")) {
+
+                    //CustomToast.showToastMessage(this, jsonObject.get("message").toString());
+
+
+
+                } else {
+
+
+                    // CustomToast.showToastMessage(this, jsonObject.get("message").toString());
+                }
+
+            }  else if (responseType.equals(NetworkConstants.Type.HANDLE_OR_EMAIL)) { //Get Handle when email is entered and verify.....
+                // Get Email e=when handle is enterd and verify..
+               /* if (jsonObject.get("status").getAsString().equals("-1")) {
+                    if (jsonObject.get("message").getAsString().equals("User is registered with us")) {
+                        Gson gson = new GsonBuilder().create();
+                        AddContactModelHandleEmail mApiResponse = gson.fromJson((JsonObject) response, AddContactModelHandleEmail.class);
+                        mEdEditEmail.setText(mApiResponse.getResponse().getEmail() + "");
+                        mEdEditHandel.setText(mApiResponse.getResponse().getUsername() + "");
+                    } else {
+                        if (chkHandleEmail.equalsIgnoreCase("email"))
+                            mInputLayoutEmail.setError("User not found ");
+                        if (chkHandleEmail.equalsIgnoreCase("handle"))
+                            mInputLayoutHandel.setError("User Not found ");
+                    }
+
+                } else {
+                    if (chkHandleEmail.equalsIgnoreCase("email"))
+                        mInputLayoutEmail.setError(jsonObject.get("message").getAsString());
+
+                    if (chkHandleEmail.equalsIgnoreCase("handle"))
+                        mInputLayoutHandel.setError(jsonObject.get("message").getAsString());
+
+                }*/
+            }
+
+        }
     }
 
     @Override
