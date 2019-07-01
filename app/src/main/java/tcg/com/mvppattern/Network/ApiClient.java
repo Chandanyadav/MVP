@@ -40,7 +40,7 @@ public class ApiClient {
                     .build();
 
             OkHttpClient client = new OkHttpClient.Builder()
-                    .certificatePinner(certificatePinner)
+                   // .certificatePinner(certificatePinner)
                     .addInterceptor(interceptor)
                     .connectTimeout(100, TimeUnit.SECONDS)
                     .readTimeout(100, TimeUnit.SECONDS).build();

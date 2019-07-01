@@ -17,4 +17,13 @@ public interface PostInterface {
     @POST("Contacts/add_contact")
     Call<JsonObject> addContactsAPI(@HeaderMap Map<String, String> headers, @FieldMap Map<String, String> param);
 
+
+    @FormUrlEncoded
+    @POST("Contacts/seconCallAPi")
+    Call<JsonObject> addSecondCallAPI(@HeaderMap Map<String, String> headers, @FieldMap Map<String, String> param);
+
+
+    @FormUrlEncoded
+    @POST("device/update_fcm_token")
+    Single<JsonObject> updateFCMTokenRX(@HeaderMap Map<String, String> headers, @FieldMap Map<String, String> param);
 }

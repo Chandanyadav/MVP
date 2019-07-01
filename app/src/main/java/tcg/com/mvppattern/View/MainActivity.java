@@ -11,6 +11,13 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import io.reactivex.SingleObserver;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import tcg.com.mvppattern.Network.ApiClient;
 import tcg.com.mvppattern.Network.ErrorBody;
 import tcg.com.mvppattern.Network.NetworkConstants;
@@ -60,6 +67,58 @@ public class MainActivity extends AppCompatActivity implements PresenterResponse
 
         }
     }
+
+
+/*
+    public void updateFCMRegistrationToServer(String refreshedToken, String device_id) {
+
+        if (sharedPrefs.getString(context, Constants.privatekeyDy) != null) {
+
+            String publicKey = sharedPrefs.getString(context, Constants.publickey);
+            String token = sharedPrefs.getString(context, Constants.google_aut);
+
+            String apiDate = "device_id=" + device_id + "&fcm_token=" + refreshedToken + "&request_type=" + Constants.requestType + "&publicKey=" + publicKey;
+            String signature = new SignatureKey(context).getSignatureKey(apiDate);
+
+            // new NotificationPresenter(this, ApiClient.getClient(context).create(PostInterface.class)).updateFCMToken(device_id, refreshedToken, signature, token, publicKey);
+
+            Map<String, String> paramlist = new HashMap<>();
+            paramlist.put("device_id", device_id);
+            paramlist.put("request_type", "mobile");
+            paramlist.put("fcm_token", refreshedToken);
+
+            Map<String, String> haderparam = new HashMap<>();
+            haderparam.put("signature", signature);
+            haderparam.put("publicKey", publicKey);
+            haderparam.put("access-token", token);
+
+            ApiClient.getClient(context).create(PostInterface.class).updateFCMTokenRX(haderparam, paramlist)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new SingleObserver<JsonObject>() {
+                        @Override
+                        public void onSubscribe(Disposable d) {
+
+                        }
+
+                        @Override
+                        public void onSuccess(JsonObject jsonObject) {
+                            if (jsonObject.get("status").getAsString().equals("-1")) {
+                                //  Log.e("TAG", "Error ===>" + jsonObject.get("message").getAsString());
+                            } else {
+                                String message = jsonObject.get("message").getAsString();
+                                //Log.e("TAG", "Error ===>" + message);
+                            }
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            System.out.println("Error: " + e.getMessage());
+                        }
+                    });
+        }
+    }
+*/
 
 
 

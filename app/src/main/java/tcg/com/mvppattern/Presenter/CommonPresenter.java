@@ -46,6 +46,26 @@ public class CommonPresenter implements ApiNetworkResponse {
         apiService.addContactsAPI(haderparam, paramlist).enqueue(networkHandler.EnqueueRequest(NetworkConstants.Type.ADD_CONTACTS));
     }
 
+
+    public void addSecondCall(String firstName, String lastName, String requestType, String emailId, String userName) {
+
+        Map<String, String> paramlist = new HashMap<>();
+        paramlist.put("first_name", firstName);
+        paramlist.put("last_name", lastName);
+        paramlist.put("request_type", requestType);
+        paramlist.put("email", emailId);
+        paramlist.put("username", userName);
+
+
+
+        Map<String, String> haderparam = new HashMap<>();
+        //haderparam.put("content-type", "application/json");
+        haderparam.put("signature", "");
+        haderparam.put("publicKey", "");
+        haderparam.put("access-token", "");
+
+        apiService.addSecondCallAPI(haderparam, paramlist).enqueue(networkHandler.EnqueueRequest(NetworkConstants.Type.SECOND_ACTIVITY));
+    }
     @Override
     public void onResponse(Object responseBody, String responseType) {
 

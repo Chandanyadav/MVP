@@ -11,6 +11,7 @@ public class NetworkConstants {
 
         String ADD_CONTACTS = "ADD_CONTACTS";
         String HANDLE_OR_EMAIL = "HANDLE_OR_EMAIL";
+        String SECOND_ACTIVITY = "SECOND_ACTIVITY";
 
     }
 
