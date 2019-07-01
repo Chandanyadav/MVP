@@ -1,6 +1,7 @@
 package tcg.com.mvppattern.Presenter;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -81,6 +82,7 @@ public class CommonPresenter implements ApiNetworkResponse {
     @Override
     public void onFailure(Throwable message, String responseType) {
         presenterResponse.onFailure(message, responseType);
+        Log.e("","");
     }
 
 }
